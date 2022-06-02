@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const PORT = 8000
+
+app.use(cors())
 
 const rappers = {
     '21 savage': {
@@ -34,6 +37,6 @@ app.get('/api/:rapperName', (request, response) => {                            
         //response.json(rappers)                                                                  //sends json as a response to the requested URL
 })
 
-app.listen(PORT, () => {                                                                         //listens to a specific port number
+app.listen(process.env.PORT || PORT, () => {                                                      //listens to a specific port number || use the port that the website is trying to make us use
     console.log(`The server is running on port ${PORT}`)
 })                                                                                
